@@ -1,23 +1,12 @@
 [
 {
     "model": "webapp.product",
-    "pk": 13,
-    "fields": {
-        "name": "беляши",
-        "description": "фаст-фуд",
-        "category": "food",
-        "amount": 0,
-        "price": "45.00"
-    }
-},
-{
-    "model": "webapp.product",
     "pk": 14,
     "fields": {
         "name": "Капуччино",
         "description": "кофе - бодрящий напиток",
         "category": "drinks",
-        "amount": 3,
+        "amount": 2,
         "price": "90.00"
     }
 },
@@ -61,7 +50,7 @@
         "name": "Самса",
         "description": "фаст-фуд",
         "category": "food",
-        "amount": 10,
+        "amount": 8,
         "price": "70.00"
     }
 },
@@ -96,6 +85,28 @@
         "category": "food",
         "amount": 5,
         "price": "90.00"
+    }
+},
+{
+    "model": "webapp.product",
+    "pk": 24,
+    "fields": {
+        "name": "торт",
+        "description": "десерт после основного блюда",
+        "category": "other",
+        "amount": 10,
+        "price": "150.00"
+    }
+},
+{
+    "model": "webapp.product",
+    "pk": 25,
+    "fields": {
+        "name": "Колбаса - Халал",
+        "description": "перекус",
+        "category": "food",
+        "amount": 9,
+        "price": "250.00"
     }
 },
 {
@@ -143,6 +154,28 @@
     }
 },
 {
+    "model": "webapp.order",
+    "pk": 51,
+    "fields": {
+        "name": "customer1",
+        "phone": "0555555666",
+        "address": "Тунгуч 39/14",
+        "created_at": "2023-02-09T16:43:48.632Z",
+        "client": null
+    }
+},
+{
+    "model": "webapp.order",
+    "pk": 52,
+    "fields": {
+        "name": "customer2",
+        "phone": "996558556558",
+        "address": "мкр. Улан 59/15",
+        "created_at": "2023-02-09T17:22:55.739Z",
+        "client": null
+    }
+},
+{
     "model": "webapp.orderproduct",
     "pk": 19,
     "fields": {
@@ -176,6 +209,24 @@
         "product": 17,
         "order": 50,
         "qty": 5
+    }
+},
+{
+    "model": "webapp.orderproduct",
+    "pk": 23,
+    "fields": {
+        "product": 14,
+        "order": 51,
+        "qty": 1
+    }
+},
+{
+    "model": "webapp.orderproduct",
+    "pk": 24,
+    "fields": {
+        "product": 18,
+        "order": 51,
+        "qty": 2
     }
 }
 ]
