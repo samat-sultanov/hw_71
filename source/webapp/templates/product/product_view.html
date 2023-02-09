@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Details{% endblock %}
+
+{% block nav %}
+    {% if request.user.is_authenticated and perms.webapp.change_product %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'webapp:product_update' product.pk %}">Редактировать</a></li>
+    {% endif %}
+    {% if request.user.is_authenticated and perms.webapp.delete_product %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'webapp:product_delete' product.pk %}">Удалить</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h1>{{ product.name }}</h1>
+            <p class="card-text">Категория: {{ product.get_category_display }}</p>
+            <p class="card-text">Осталось: {{ product.amount }} по {{ product.price }} сом</p>
+            <p class="pre">{{ product.description }}</p>
+        </div>
+    </div>
+    {% include "partial/cart_add_form.html" %}
+{% endblock %}
+

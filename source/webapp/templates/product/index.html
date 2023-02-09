@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {{ request.path }}
+    <h1 class="text-success">Товары</h1>
+    <div class="my-3">{% include 'partial/search.html' %}</div>
+    <div class="row my-3">
+        {% for product in products %}
+            <div class="col-12 col-md-4 col-lg-4">
+                <div class="card mb-3">
+                    <div class="card-body ">
+                        <h5 class="card-title"><a
+                                href="{% url "webapp:product_view" product.pk %}">{{ product.name }}</a></h5>
+                        <p class="card-text">Категория: {{ product.get_category_display }}</p>
+                        <p class="card-text">Осталось в магазине: {{ product.amount }}</p>
+                        {% for item in product.in_cart.all %}
+                            <p class="card-text">В корзинах пользователей: {{ item.qty }}</p>
+                        {% endfor %}
+                        <p class="card-text">Цена: {{ product.price }} сом</p>
+                            <div class="btn-group">
+                                {% if request.user.is_authenticated and perms.webapp.change_product %}
+                                    <a class="btn btn-success" href="{% url 'webapp:product_update' product.pk %}">Изменить</a>
+                                {% endif %}
+                                {% if request.user.is_authenticated and perms.webapp.delete_product %}
+                                    <a class="btn btn-warning" href="{% url 'webapp:product_delete' product.pk %}">Удалить</a>
+                                {% endif %}
+                            </div>
+                        {% include "partial/cart_add_form.html" %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}&nbsp;
+{% endblock %}
